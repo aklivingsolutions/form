@@ -6,20 +6,26 @@
     <title>AK Living Solutions - Contact Form</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="shortcut icon" type="image/png" href="https://bucket.ex10.tech/images/8b4219c1-8ca4-11ef-ab4d-0242ac12000e/originalContentUrl.png" />
     <style>
         body {
             background-color: #1e1e1f;
             font-family: 'Kanit', sans-serif;
             color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
         }
         .form-container {
             background-color: #2a2a2b;
             border-radius: 15px;
             box-shadow: 0 0 30px rgba(0,0,0,0.3);
             padding: 40px;
-            margin-top: 50px;
+            margin: 50px auto;
             transition: all 0.3s ease;
+            max-width: 800px;
+            width: 100%;
         }
         .form-container:hover {
             transform: translateY(-5px);
@@ -29,6 +35,8 @@
             background-color: #007bff;
             border-color: #007bff;
             transition: all 0.3s ease;
+            padding: 12px 24px;
+            font-weight: 500;
         }
         .btn-primary:hover {
             background-color: #0056b3;
@@ -38,13 +46,21 @@
         }
         .form-control, .form-select {
             background-color: #3a3a3b;
-            border: none;
+            border: 1px solid #4a4a4b;
             color: #ffffff;
             transition: all 0.3s ease;
+            padding: 12px;
+            font-size: 16px;
         }
         .form-control:focus, .form-select:focus {
             background-color: #4a4a4b;
             box-shadow: 0 0 0 0.25rem rgba(0,123,255,0.25);
+            border-color: #007bff;
+        }
+        .form-label {
+            font-weight: 500;
+            margin-bottom: 8px;
+            font-size: 16px;
         }
         .loading {
             display: none;
@@ -67,7 +83,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(30,30,31,0.7);
+            background-color: rgba(30,30,31,0.9);
         }
         .loading:not(:required):after {
             content: '';
@@ -87,7 +103,7 @@
         .logo-container {
             width: 150px;
             height: 150px;
-            margin: 0 auto 20px;
+            margin: 0 auto 30px;
             border-radius: 50%;
             overflow: hidden;
             background-color: #ffffff;
@@ -106,62 +122,83 @@
             max-height: 100%;
             object-fit: contain;
         }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .form-container {
+                margin: 20px;
+                padding: 20px;
+            }
+            .logo-container {
+                width: 120px;
+                height: 120px;
+                margin-bottom: 20px;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8 form-container">
-                <div class="logo-container">
-                    <img src="https://bucket.ex10.tech/images/8b4219c1-8ca4-11ef-ab4d-0242ac12000e/originalContentUrl.png" alt="AK Living Solutions Logo">
+            <div class="col-12">
+                <div class="form-container">
+                    <div class="logo-container">
+                        <img src="https://bucket.ex10.tech/images/8b4219c1-8ca4-11ef-ab4d-0242ac12000e/originalContentUrl.png" alt="AK Living Solutions Logo">
+                    </div>
+                    <h2 class="text-center mb-4">AK Living Solutions - Contact Form</h2>
+                    <form id="contactForm" novalidate>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">ชื่อ-นามสกุล *</label>
+                            <input type="text" class="form-control" id="name" name="name" required 
+                                   pattern="^[ก-์a-zA-Z\s]{2,100}$">
+                            <div class="invalid-feedback">กรุณากรอกชื่อ-นามสกุลให้ถูกต้อง</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">เบอร์โทรศัพท์ *</label>
+                            <input type="tel" class="form-control" id="phone" name="phone" required 
+                                   pattern="^[0-9]{9,10}$">
+                            <div class="invalid-feedback">กรุณากรอกเบอร์โทรศัพท์ให้ถูกต้อง (9-10 หลัก)</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="service" class="form-label">บริการที่สนใจ *</label>
+                            <select class="form-select" id="service" name="service" required>
+                                <option value="">เลือกบริการ</option>
+                                <option value="ซื้อ-ขายบ้านและคอนโด">ซื้อ-ขายบ้านและคอนโด</option>
+                                <option value="ปล่อยเช่า ดูแลแบบ One Stop Service">ปล่อยเช่า ดูแลแบบ One Stop Service</option>
+                                <option value="รีไฟแนนซ์ปิดหนี้ รวมหนี้ไว้ที่เดียว">รีไฟแนนซ์ปิดหนี้ รวมหนี้ไว้ที่เดียว</option>
+                                <option value="บ้านเงินเหลือ เปลี่ยนภาระเป็นทุน">บ้านเงินเหลือ เปลี่ยนภาระเป็นทุน</option>
+                            </select>
+                            <div class="invalid-feedback">กรุณาเลือกบริการที่สนใจ</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="location" class="form-label">พื้นที่ที่สนใจ *</label>
+                            <select class="form-select" id="location" name="location" required>
+                                <option value="">เลือกพื้นที่</option>
+                                <option value="กรุงเทพฯ">กรุงเทพฯ</option>
+                                <option value="ขอนแก่น">ขอนแก่น</option>
+                                <option value="โคราช">โคราช</option>
+                                <option value="เชียงใหม่">เชียงใหม่</option>
+                                <option value="ชลบุรี">ชลบุรี</option>
+                                <option value="พัทยา">พัทยา</option>
+                                <option value="นนทบุรี">นนทบุรี</option>
+                                <option value="สมุทรสาคร">สมุทรสาคร</option>
+                                <option value="สมุทรปราการ">สมุทรปราการ</option>
+                                <option value="ปทุมธานี">ปทุมธานี</option>
+                                <option value="อื่นๆ">อื่นๆ</option>
+                            </select>
+                            <div class="invalid-feedback">กรุณาเลือกพื้นที่ที่สนใจ</div>
+                        </div>
+                        <div class="mb-4">
+                            <label for="uid" class="form-label">Line ID (ถ้ามี)</label>
+                            <input type="text" class="form-control" id="uid" name="uid">
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="fas fa-paper-plane me-2"></i>ส่งข้อมูล
+                            </button>
+                        </div>
+                    </form>
                 </div>
-                <h2 class="text-center mb-4">AK Living Solutions - Contact Form</h2>
-                <form id="contactForm">
-                    <div class="mb-3">
-                        <label for="name" class="form-label">ชื่อ-นามสกุล</label>
-                        <input type="text" class="form-control" id="name" name="name" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="phone" class="form-label">เบอร์โทรศัพท์</label>
-                        <input type="tel" class="form-control" id="phone" name="phone" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="service" class="form-label">บริการที่สนใจ</label>
-                        <select class="form-select" id="service" name="service" required>
-                            <option value="">เลือกบริการ</option>
-                            <option value="ซื้อ-ขายบ้านและคอนโด">ซื้อ-ขายบ้านและคอนโด</option>
-                            <option value="ปล่อยเช่า ดูแลแบบ">ปล่อยเช่า ดูแลแบบ One Stop Service</option>
-                            <option value="รีไฟแนนซ์ปิดหนี้ รวมหนี้ไว้ที่เดียว">รีไฟแนนซ์ปิดหนี้ รวมหนี้ไว้ที่เดียว</option>
-                            <option value="บ้านเงินเหลือ เปลี่ยนภาระเป็นทุน">บ้านเงินเหลือ เปลี่ยนภาระเป็นทุน</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="location" class="form-label">พื้นที่ที่สนใจ</label>
-                        <select class="form-select" id="location" name="location" required>
-                            <option value="">เลือกพื้นที่</option>
-                            <option value="กรุงเทพฯ">กรุงเทพฯ</option>
-                            <option value="ขอนแก่น">ขอนแก่น</option>
-                            <option value="โคราช">โคราช</option>
-                            <option value="เชียงใหม่">เชียงใหม่</option>
-                            <option value="ชลบุรี">ชลบุรี</option>
-                            <option value="พัทยา">พัทยา</option>
-                            <option value="นนทบุรี">นนทบุรี</option>
-                            <option value="สมุทรสาคร">สมุทรสาคร</option>
-                            <option value="สมุทรปราการ">สมุทรปราการ</option>
-                            <option value="ปทุมธานี">ปทุมธานี</option>
-                            <option value="อื่นๆ">อื่นๆ</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="uid" class="form-label">Line ID (ถ้ามี)</label>
-                        <input type="text" class="form-control" id="uid" name="uid">
-                    </div>
-                    <div class="d-grid">
-                        <button type="submit" class="btn btn-primary btn-lg">
-                            <i class="fas fa-paper-plane me-2"></i>ส่งข้อมูล
-                        </button>
-                    </div>
-                </form>
             </div>
         </div>
     </div>
@@ -174,47 +211,176 @@
         const form = document.getElementById('contactForm');
         const loading = document.querySelector('.loading');
 
+        // Function to validate form
+        function validateForm() {
+            const name = document.getElementById('name');
+            const phone = document.getElementById('phone');
+            const service = document.getElementById('service');
+            const location = document.getElementById('location');
+            
+            let isValid = true;
+
+            // Validate name
+            if (!name.value.match(/^[ก-์a-zA-Z\s]{2,100}$/)) {
+                name.classList.add('is-invalid');
+                isValid = false;
+            } else {
+                name.classList.remove('is-invalid');
+            }
+
+            // Validate phone
+            if (!phone.value.match(/^[0-9]{9,10}$/)) {
+                phone.classList.add('is-invalid');
+                isValid = false;
+            } else {
+                phone.classList.remove('is-invalid');
+            }
+
+            // Validate service
+            if (!service.value) {
+                service.classList.add('is-invalid');
+                isValid = false;
+            } else {
+                service.classList.remove('is-invalid');
+            }
+
+            // Validate location
+            if (!location.value) {
+                location.classList.add('is-invalid');
+                isValid = false;
+            } else {
+                location.classList.remove('is-invalid');
+            }
+
+            return isValid;
+        }
+
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
-            loading.style.display = 'block';
-
-            const formData = new FormData(form);
-            const data = Object.fromEntries(formData.entries());
-
-            try {
-                const response = await fetch('https://script.google.com/macros/s/AKfycbxaiBDDISpcl7KQZ5Gv6s9CZicUcC5ukzDVb2TcpyII3WWvTnGapGPR4ii4wkh1l65P/exec', {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    cache: 'no-cache',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(data),
-                });
-
-                loading.style.display = 'none';
-
+            
+            if (!validateForm()) {
                 Swal.fire({
-                    icon: 'success',
-                    title: 'ส่งข้อมูลสำเร็จ!',
-                    text: 'ขอบคุณที่ติดต่อ AK Living Solutions เราจะติดต่อกลับโดยเร็วที่สุด',
+                    icon: 'error',
+                    title: 'กรุณากรอกข้อมูลให้ครบถ้วน',
+                    text: 'โปรดตรวจสอบข้อมูลที่กรอกให้ถูกต้อง',
                     confirmButtonColor: '#007bff',
                     background: '#2a2a2b',
                     color: '#ffffff'
                 });
+                return;
+            }
 
-                form.reset();
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+
+            const confirmationMessage = `
+                กรุณาตรวจสอบข้อมูลของคุณ:
+                
+                ชื่อ-นามสกุล: ${data.name}
+                เบอร์โทรศัพท์: ${data.phone}
+                บริการที่สนใจ: ${data.service}
+                พื้นที่ที่สนใจ: ${data.location}
+                Line ID: ${data.uid || 'ไม่ระบุ'}
+            `;
+
+            try {
+                const result = await Swal.fire({
+                    title: 'ยืนยันข้อมูล',
+                    html: confirmationMessage.replace(/\n/g, '<br>'),
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonColor: '#007bff',
+                    cancelButtonColor: '#dc3545',
+                    confirmButtonText: 'ยืนยัน',
+                    cancelButtonText: 'แก้ไข',
+                    background: '#2a2a2b',
+                    color: '#ffffff'
+                });
+
+                if (result.isConfirmed) {
+                    loading.style.display = 'block';
+                    try {
+                        const response = await fetch('https://script.google.com/macros/s/AKfycbxaiBDDISpcl7KQZ5Gv6s9CZicUcC5ukzDVb2TcpyII3WWvTnGapGPR4ii4wkh1l65P/exec', {
+                            method: 'POST',
+                            mode: 'no-cors',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify(data),
+                        });
+
+                        loading.style.display = 'none';
+
+                        await Swal.fire({
+                            icon: 'success',
+                            title: 'ส่งข้อมูลสำเร็จ!',
+                            text: 'ขอบคุณที่ติดต่อ AK Living Solutions เราจะติดต่อกลับโดยเร็วที่สุด',
+                            confirmButtonColor: '#007bff',
+                            background: '#2a2a2b',
+                            color: '#ffffff'
+                        });
+
+                        form.reset();
+                    } catch (error) {
+                        console.error('Error:', error);
+                        loading.style.display = 'none';
+                        
+                        await Swal.fire({
+                            icon: 'error',
+                            title: 'เกิดข้อผิดพลาด',
+                            text: 'ไม่สามารถส่งข้อมูลได้ กรุณาลองใหม่อีกครั้ง',
+                            confirmButtonColor: '#007bff',
+                            background: '#2a2a2b',
+                            color: '#ffffff'
+                        });
+                    }
+                }
             } catch (error) {
+                console.error('Error:', error);
                 loading.style.display = 'none';
-                Swal.fire({
+                
+                await Swal.fire({
                     icon: 'error',
                     title: 'เกิดข้อผิดพลาด',
-                    text: 'ไม่สามารถส่งข้อมูลได้ กรุณาลองใหม่อีกครั้ง',
+                    text: 'เกิดข้อผิดพลาดที่ไม่คาดคิด กรุณาลองใหม่อีกครั้ง',
                     confirmButtonColor: '#007bff',
                     background: '#2a2a2b',
                     color: '#ffffff'
                 });
             }
+        });
+
+        // Add input event listeners for real-time validation
+        document.getElementById('name').addEventListener('input', function() {
+            if (this.value.match(/^[ก-์a-zA-Z\s]{2,100}$/)) {
+                this.classList.remove('is-invalid');
+                this.classList.add('is-valid');
+            } else {
+                this.classList.remove('is-valid');
+                this.classList.add('is-invalid');
+            }
+        });
+
+        document.getElementById('phone').addEventListener('input', function() {
+            if (this.value.match(/^[0-9]{9,10}$/)) {
+                this.classList.remove('is-invalid');
+                this.classList.add('is-valid');
+            } else {
+                this.classList.remove('is-valid');
+                this.classList.add('is-invalid');
+            }
+        });
+
+        ['service', 'location'].forEach(id => {
+            document.getElementById(id).addEventListener('change', function() {
+                if (this.value) {
+                    this.classList.remove('is-invalid');
+                    this.classList.add('is-valid');
+                } else {
+                    this.classList.remove('is-valid');
+                    this.classList.add('is-invalid');
+                }
+            });
         });
     </script>
 </body>
