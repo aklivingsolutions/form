@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AK Living Solutions - บริการด้านอสังหาริมทรัพย์ครบวงจร">
     <title>AK Living Solutions - Contact Form</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
@@ -122,6 +123,34 @@
             max-height: 100%;
             object-fit: contain;
         }
+        .privacy-policy {
+            background-color: #3a3a3b;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+        .privacy-policy h3 {
+            color: #007bff;
+            margin-bottom: 15px;
+        }
+        .privacy-policy p {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        .consent-checkbox {
+            margin: 20px 0;
+        }
+        .contact-info {
+            background-color: #3a3a3b;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        .contact-info i {
+            color: #007bff;
+            margin-right: 10px;
+        }
         
         /* Responsive adjustments */
         @media (max-width: 768px) {
@@ -133,6 +162,9 @@
                 width: 120px;
                 height: 120px;
                 margin-bottom: 20px;
+            }
+            .privacy-policy {
+                font-size: 13px;
             }
         }
     </style>
@@ -158,6 +190,11 @@
                             <input type="tel" class="form-control" id="phone" name="phone" required 
                                    pattern="^[0-9]{9,10}$">
                             <div class="invalid-feedback">กรุณากรอกเบอร์โทรศัพท์ให้ถูกต้อง (9-10 หลัก)</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">อีเมล (ถ้ามี)</label>
+                            <input type="email" class="form-control" id="email" name="email">
+                            <div class="invalid-feedback">กรุณากรอกอีเมลให้ถูกต้อง</div>
                         </div>
                         <div class="mb-3">
                             <label for="service" class="form-label">บริการที่สนใจ *</label>
@@ -192,10 +229,47 @@
                             <label for="uid" class="form-label">Line ID (ถ้ามี)</label>
                             <input type="text" class="form-control" id="uid" name="uid">
                         </div>
+
+                        <div class="mb-4">
+                            <label for="message" class="form-label">ข้อความเพิ่มเติม (ถ้ามี)</label>
+                            <textarea class="form-control" id="message" name="message" rows="3"></textarea>
+                        </div>
+
+                        <div class="privacy-policy">
+                            <h3>นโยบายความเป็นส่วนตัว</h3>
+                            <p>AK Living Solutions ให้ความสำคัญกับการคุ้มครองข้อมูลส่วนบุคคลของท่าน เราจะเก็บรวบรวม ใช้ และเปิดเผยข้อมูลส่วนบุคคลของท่านตามนโยบายความเป็นส่วนตัวดังต่อไปนี้:</p>
+                            <ol>
+                                <li>เราจะเก็บข้อมูลส่วนบุคคลของท่านเพื่อวัตถุประสงค์ในการติดต่อและให้บริการเท่านั้น</li>
+                                <li>เราจะไม่เปิดเผยข้อมูลส่วนบุคคลของท่านให้แก่บุคคลภายนอกโดยไม่ได้รับความยินยอมจากท่าน</li>
+                                <li>ท่านมีสิทธิในการเข้าถึง แก้ไข หรือขอลบข้อมูลส่วนบุคคลของท่านได้ตลอดเวลา</li>
+                                <li>เราใช้มาตรการรักษาความปลอดภัยที่เหมาะสมเพื่อปกป้องข้อมูลส่วนบุคคลของท่าน</li>
+                            </ol>
+                        </div>
+
+                        <div class="consent-checkbox mb-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="consent" name="consent" required>
+                                <label class="form-check-label" for="consent">
+                                    ข้าพเจ้าได้อ่านและยอมรับนโยบายความเป็นส่วนตัว และยินยอมให้เก็บรวบรวม ใช้ และเปิดเผยข้อมูลส่วนบุคคลของข้าพเจ้า *
+                                </label>
+                                <div class="invalid-feedback">
+                                    กรุณายอมรับนโยบายความเป็นส่วนตัวเพื่อดำเนินการต่อ
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="d-grid">
                             <button type="submit" class="btn btn-primary btn-lg">
                                 <i class="fas fa-paper-plane me-2"></i>ส่งข้อมูล
                             </button>
+                        </div>
+
+                        <div class="contact-info mt-4">
+                            <h4><i class="fas fa-info-circle"></i>ติดต่อเรา</h4>
+                            <p><i class="fas fa-phone"></i>โทร: 098-952-8254</p>
+                            <p><i class="fas fa-envelope"></i>อีเมล: contact@aklivingsolutions.com</p>
+                            <p><i class="fab fa-line"></i>Line Official: @119slumj</p>
+                            <p><i class="fas fa-clock"></i>เวลาทำการ: จันทร์ - เสาร์ 9:00 - 18:00 น.</p>
                         </div>
                     </form>
                 </div>
@@ -215,8 +289,10 @@
         function validateForm() {
             const name = document.getElementById('name');
             const phone = document.getElementById('phone');
+            const email = document.getElementById('email');
             const service = document.getElementById('service');
             const location = document.getElementById('location');
+            const consent = document.getElementById('consent');
             
             let isValid = true;
 
@@ -236,6 +312,14 @@
                 phone.classList.remove('is-invalid');
             }
 
+            // Validate email if provided
+            if (email.value && !email.value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+                email.classList.add('is-invalid');
+                isValid = false;
+            } else {
+                email.classList.remove('is-invalid');
+            }
+
             // Validate service
             if (!service.value) {
                 service.classList.add('is-invalid');
@@ -250,6 +334,14 @@
                 isValid = false;
             } else {
                 location.classList.remove('is-invalid');
+            }
+
+            // Validate consent
+            if (!consent.checked) {
+                consent.classList.add('is-invalid');
+                isValid = false;
+            } else {
+                consent.classList.remove('is-invalid');
             }
 
             return isValid;
@@ -278,9 +370,11 @@
                 
                 ชื่อ-นามสกุล: ${data.name}
                 เบอร์โทรศัพท์: ${data.phone}
+                อีเมล: ${data.email || 'ไม่ระบุ'}
                 บริการที่สนใจ: ${data.service}
                 พื้นที่ที่สนใจ: ${data.location}
                 Line ID: ${data.uid || 'ไม่ระบุ'}
+                ข้อความเพิ่มเติม: ${data.message || 'ไม่ระบุ'}
             `;
 
             try {
@@ -321,6 +415,8 @@
                         });
 
                         form.reset();
+                        // Reset validation states
+                        form.querySelectorAll('.is-valid').forEach(el => el.classList.remove('is-valid'));
                     } catch (error) {
                         console.error('Error:', error);
                         loading.style.display = 'none';
@@ -371,6 +467,16 @@
             }
         });
 
+        document.getElementById('email').addEventListener('input', function() {
+            if (!this.value || this.value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+                this.classList.remove('is-invalid');
+                this.value && this.classList.add('is-valid');
+            } else {
+                this.classList.remove('is-valid');
+                this.classList.add('is-invalid');
+            }
+        });
+
         ['service', 'location'].forEach(id => {
             document.getElementById(id).addEventListener('change', function() {
                 if (this.value) {
@@ -381,6 +487,14 @@
                     this.classList.add('is-invalid');
                 }
             });
+        });
+
+        document.getElementById('consent').addEventListener('change', function() {
+            if (this.checked) {
+                this.classList.remove('is-invalid');
+            } else {
+                this.classList.add('is-invalid');
+            }
         });
     </script>
 </body>
